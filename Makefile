@@ -1,3 +1,5 @@
+IMAGE_NAME = "timm_pl"
+
 
 help:  ## Show help
 	@grep -E '^[.a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
@@ -28,6 +30,12 @@ test-full: ## Run all tests
 
 train: ## Train the model
 	python src/train.py
+
+build:
+	docker build -t ${IMAGE_NAME} . 
+
+run:
+	docker run -it --volume "$(shell pwd)":/opt/src ${IMAGE_NAME} python src/train.py experiment=example.yaml 
 
 debug: ## Enter debugging mode with pdb
 	#
