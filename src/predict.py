@@ -11,11 +11,11 @@ from timm.data.transforms_factory import transforms_imagenet_eval
 
 class Predictor(BasePredictor):
     def setup(self):
-        """Load the model into memory to make running multiple predictions efficient"""
+        """Load the model into memory to make running multiple predictions efficient."""
 
         self.transform = transforms_imagenet_eval()
 
-        with open("imagenet_1k.json", "r") as f:
+        with open("imagenet_1k.json") as f:
             self.labels = list(json.loads(f.read()).values())
 
     # Define the arguments and types the model takes as input
@@ -24,7 +24,7 @@ class Predictor(BasePredictor):
         image: Path = Input(description="Image to classify"),
         model_name: str = "resnet18",
     ) -> Any:
-        """Run a single prediction on the model"""
+        """Run a single prediction on the model."""
         # Preprocess the image
         img = Image.open(image).convert("RGB")
         img = self.transform(img)

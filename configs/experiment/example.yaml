@@ -24,7 +24,7 @@ trainer:
 net:
   _target_: timm.create_model
   model_name: resnet18
-  pretrained: true 
+  pretrained: true
   num_classes: 10
 
 datamodule:

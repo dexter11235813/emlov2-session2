@@ -32,10 +32,10 @@ train: ## Train the model
 	python src/train.py
 
 build:
-	docker build -t ${IMAGE_NAME} . 
+	docker build -t ${IMAGE_NAME} .
 
 run:
-	docker run -it --volume "$(shell pwd)":/opt/src ${IMAGE_NAME} python src/train.py experiment=example.yaml 
+	docker run -it --volume "$(shell pwd)":/opt/src ${IMAGE_NAME} python src/train.py experiment=example.yaml
 
 cog-train:
 	cog run python src/train.py experiment=example.yaml
