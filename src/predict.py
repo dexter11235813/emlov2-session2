@@ -2,6 +2,7 @@ import json
 from typing import Any
 
 import numpy as np
+import requests
 import timm
 import torch
 from cog import BasePredictor, Input, Path
@@ -14,6 +15,10 @@ class Predictor(BasePredictor):
         """Load the model into memory to make running multiple predictions efficient."""
 
         self.transform = transforms_imagenet_eval()
+
+        imagenet_json = requests.get("https://gist.githubusercontent.com/dexter11235813/a66ef36483b8af748fc694db6febe985/raw/07221d31b542d53b9b569760ff212b9787459b73/imagenet_1k.json")
+        with open("imagenet_1k.json", "wb") as f:
+            f.write(imagenet_json.content)
 
         with open("imagenet_1k.json") as f:
             self.labels = list(json.loads(f.read()).values())
