@@ -37,6 +37,9 @@ build:
 run:
 	docker run -it --volume "$(shell pwd)":/opt/src ${IMAGE_NAME} python src/train.py experiment=example.yaml 
 
+cog-train:
+	cog run python src/train.py experiment=example.yaml
+
 debug: ## Enter debugging mode with pdb
 	#
 	# tips:
