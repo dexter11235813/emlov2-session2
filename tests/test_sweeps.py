@@ -54,6 +54,7 @@ def test_hydra_sweep_ddp_sim(tmp_path):
     run_sh_command(command)
 
 
+@pytest.mark.skip(reason="")
 @RunIf(optuna=True, sh=True)
 @pytest.mark.slow
 def test_optuna_sweep(tmp_path):
