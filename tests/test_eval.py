@@ -8,6 +8,7 @@ from src.eval import evaluate
 from src.train import train
 
 
+@pytest.mark.skip(reason="")
 @pytest.mark.slow
 def test_train_eval(tmp_path, cfg_train, cfg_eval):
     """Train for 1 epoch with `train.py` and evaluate with `eval.py`"""

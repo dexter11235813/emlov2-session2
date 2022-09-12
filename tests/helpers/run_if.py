@@ -18,6 +18,7 @@ from tests.helpers.package_available import (
     _IS_WINDOWS,
     _MLFLOW_AVAILABLE,
     _NEPTUNE_AVAILABLE,
+    _OPTUNA_AVAILABE,
     _SH_AVAILABLE,
     _TPU_AVAILABLE,
     _WANDB_AVAILABLE,
@@ -52,6 +53,7 @@ class RunIf:
         neptune: bool = False,
         comet: bool = False,
         mlflow: bool = False,
+        optuna: bool = False,
         **kwargs,
     ):
         """
@@ -128,6 +130,10 @@ class RunIf:
         if mlflow:
             conditions.append(not _MLFLOW_AVAILABLE)
             reasons.append("mlflow")
+
+        if optuna:
+            conditions.append(not _OPTUNA_AVAILABE)
+            reasons.append("optuna")
 
         reasons = [rs for cond, rs in zip(conditions, reasons) if cond]
         return pytest.mark.skipif(
