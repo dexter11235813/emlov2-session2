@@ -6,7 +6,7 @@
   make build
   ```
 
-- To train and evaluate a pretrained model from the `timm` library on `CIFAR10` dataset based on config defined in the `configs/experiment/example/yaml` file, run :
+- To train and evaluate a pretrained model from the `timm` library on `CIFAR10` dataset based on config defined in the `configs/experiment/example.yaml` file, run :
 
   ```
   make run
